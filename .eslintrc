@@ -25,5 +25,11 @@
     "comma-dangle": 0,
     "semi": 2,
     "import/extensions": 0,
+    "no-restricted-syntax": 1,
+    "no-loop-func": 1,
+    "consistent-return": 1,
+    "no-nested-ternary": 1,
+    "react/require-default-props": 0,
+    "react/forbid-prop-types": 0
   }
 }
