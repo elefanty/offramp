@@ -56,4 +56,9 @@ class Router extends Component {
   }
 }
 
+Router.propTypes = {
+  store: React.PropTypes.object,
+  children: React.PropTypes.array
+};
+
 export default Router;
