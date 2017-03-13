@@ -1,16 +1,23 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 
+function parseCurrentRouter(routePath, currPath, parent, store) {
+  // insert code here
+  console.log(store);
+}
+
 @inject('store') @observer
 class Router extends Component {
 
   renderComponent = (childRoutes, currPath, parentPath = '') => {
+    const { store } = this.props;
     // childRoutes will contain all the current children
     // loop through each child route
     for (const route of childRoutes) {
+      const pathToMatch = parseCurrentRouter(route.props.path, currPath, parentPath, store.routes);
       // check if the current url path is equal to the current routes path
       // if we're at the correct route, we want to clone that element and return it
-      if (route.props.path === currPath || `${parentPath}${route.props.path}` === currPath) {
+      if (pathToMatch === currPath || `${parentPath}${route.props.path}` === currPath) {
         // check if the current route contains any index routes as children
         // works with multiple index routes
         let indexRoutes = [];
@@ -25,17 +32,21 @@ class Router extends Component {
 
       // check if the current url path includes the route we're on
       // if it doesn't, don't check this routes child routes
-      if (currPath.includes(route.props.path)) {
+      if (currPath.includes(pathToMatch)) {
         // check if the current route has children
         if (route.props.children) {
           // map through each child and recursively check each route
-          const nestedChildRoutes = React.Children.map(route.props.children, (child) => {
-            parentPath = route.props.path === '/' ? '' :
-              parentPath.includes(route.props.path) ?
-              `${parentPath}` :
-              `${parentPath}${route.props.path}`;
+          let nestedChildRoutes = React.Children.map(route.props.children, (child) => {
+            if (pathToMatch === '/') parentPath = '';
+            else if (pathToMatch.includes(parentPath)) parentPath = pathToMatch;
+            else parentPath = `${parentPath}${route.props.path}`;
             return this.renderComponent([child], currPath, parentPath);
           });
+
+          if (nestedChildRoutes.length > 1) {
+            nestedChildRoutes = nestedChildRoutes.filter(childRoute => (
+              childRoute.props.path === currPath));
+          }
 
           // return the current route and pass in all the child routes that need to be rendered
           return React.cloneElement(route, null, [...nestedChildRoutes]);
