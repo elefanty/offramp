@@ -77,7 +77,6 @@ class Router extends Component {
 
     return (
       <div>
-        <h1>Render route here</h1>
         {this.renderComponent(this.props.children, currPath)}
       </div>
     );
@@ -86,7 +85,7 @@ class Router extends Component {
 
 Router.propTypes = {
   store: React.PropTypes.object,
-  children: React.PropTypes.array
+  children: React.PropTypes.any
 };
 
 export default Router;
