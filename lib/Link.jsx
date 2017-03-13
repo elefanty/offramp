@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import routeStore from './RouteStore';
+import routeStore from './RouteStore.jsx';
 
 class Link extends Component {
   handleClick = (e) => {

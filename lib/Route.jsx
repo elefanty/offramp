@@ -27,8 +27,8 @@ class Route extends Component {
 }
 
 Route.propTypes = {
-  children: React.PropTypes.any.isRequired,
-  store: React.PropTypes.object.isRequired,
+  children: React.PropTypes.any,
+  store: React.PropTypes.object,
   hooks: React.PropTypes.any
 };
 
