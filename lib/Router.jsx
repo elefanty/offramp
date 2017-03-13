@@ -1,9 +1,26 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 
-function parseCurrentRouter(routePath, currPath, parent, store) {
-  // insert code here
-  console.log(store);
+function parseCurrentRoute(routePath, currPath, parent, store) {
+  if (!routePath) return;
+  let newPath = routePath;
+  if (routePath.includes(':')) {
+    const paramsObj = {};
+    const routePaths = routePath.match(/[a-zA-Z0-9_]+/g);
+    const urlPath = currPath.match(/[a-zA-Z0-9_]+/g);
+    let modifiedUrl = '';
+    if (routePaths && urlPath && routePaths.length === urlPath.length) {
+      for (let i = 0; i < urlPath.length; i += 1) {
+        if (!(routePaths[i] === urlPath[i])) {
+          paramsObj[routePaths[i]] = urlPath[i];
+        }
+        modifiedUrl = `${modifiedUrl}/${urlPath[i]}`;
+      }
+    }
+    store.params = paramsObj;
+    newPath = modifiedUrl;
+  }
+  return newPath;
 }
 
 @inject('store') @observer
@@ -14,7 +31,7 @@ class Router extends Component {
     // childRoutes will contain all the current children
     // loop through each child route
     for (const route of childRoutes) {
-      const pathToMatch = parseCurrentRouter(route.props.path, currPath, parentPath, store.routes);
+      const pathToMatch = parseCurrentRoute(route.props.path, currPath, parentPath, store.routes);
       // check if the current url path is equal to the current routes path
       // if we're at the correct route, we want to clone that element and return it
       if (pathToMatch === currPath || `${parentPath}${route.props.path}` === currPath) {
