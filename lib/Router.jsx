@@ -1,26 +1,44 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 
-function parseCurrentRoute(routePath, currPath, parent, store) {
+function parsedRoute(routePath, currPath, routeStore) {
   if (!routePath) return;
   let newPath = routePath;
   if (routePath.includes(':')) {
     const paramsObj = {};
-    const routePaths = routePath.match(/[a-zA-Z0-9_]+/g);
-    const urlPath = currPath.match(/[a-zA-Z0-9_]+/g);
+    const routePaths = routePath.match(/[:a-zA-Z0-9_]+/g);
+    const urlPath = currPath.match(/[:a-zA-Z0-9_]+/g);
     let modifiedUrl = '';
+
     if (routePaths && urlPath && routePaths.length === urlPath.length) {
       for (let i = 0; i < urlPath.length; i += 1) {
-        if (!(routePaths[i] === urlPath[i])) {
-          paramsObj[routePaths[i]] = urlPath[i];
+        if (!(routePaths[i] === urlPath[i]) && routePaths[i].slice(0, 1) === ':') {
+          paramsObj[routePaths[i].slice(1)] = urlPath[i];
+          modifiedUrl = `${modifiedUrl}/${urlPath[i]}`;
+        } else {
+          modifiedUrl = `${modifiedUrl}/${routePaths[i]}`;
         }
-        modifiedUrl = `${modifiedUrl}/${urlPath[i]}`;
       }
     }
-    store.params = paramsObj;
+
+    routeStore.params = paramsObj;
     newPath = modifiedUrl;
   }
+
   return newPath;
+}
+
+function returnArray(objectOrArray) {
+  return Array.isArray(objectOrArray) ? objectOrArray : [objectOrArray];
+}
+
+function getIndexRoutes(currRoute) {
+  let indexRoute = [];
+  if (currRoute.props.children) {
+    indexRoute = returnArray(currRoute.props.children).filter(route => route.props.index);
+  }
+
+  return indexRoute;
 }
 
 @inject('store') @observer
@@ -31,7 +49,7 @@ class Router extends Component {
     // childRoutes will contain all the current children
     // loop through each child route
     for (const route of childRoutes) {
-      const pathToMatch = parseCurrentRoute(route.props.path, currPath, parentPath, store.routes);
+      const pathToMatch = parsedRoute(route.props.path, currPath, parentPath, store.routes);
       // check if the current url path is equal to the current routes path
       // if we're at the correct route, we want to clone that element and return it
       if (pathToMatch === currPath || `${parentPath}${route.props.path}` === currPath) {

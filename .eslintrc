@@ -35,6 +35,7 @@
     "react/prefer-stateless-function": 0,
     "react/no-children-prop": 0,
     "react/jsx-closing-bracket-location": 0,
-    "no-plusplus": 0
+    "no-plusplus": 0,
+    "no-unused-vars": 1
   }
 }
