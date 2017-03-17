@@ -25,7 +25,8 @@ class Link extends Component {
 Link.propTypes = {
   to: React.PropTypes.string,
   className: React.PropTypes.string,
-  children: React.PropTypes.string
+  children: React.PropTypes.string,
+  store: React.propTypes.object
 };
 
 export default Link;
