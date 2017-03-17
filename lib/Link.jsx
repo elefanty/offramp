@@ -26,7 +26,7 @@ Link.propTypes = {
   to: React.PropTypes.string,
   className: React.PropTypes.string,
   children: React.PropTypes.string,
-  store: React.propTypes.object
+  store: React.PropTypes.object
 };
 
 export default Link;

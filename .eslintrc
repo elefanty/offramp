@@ -34,6 +34,7 @@
     "no-param-reassign": 0,
     "react/prefer-stateless-function": 0,
     "react/no-children-prop": 0,
-    "react/jsx-closing-bracket-location": 0
+    "react/jsx-closing-bracket-location": 0,
+    "no-plusplus": 0
   }
 }
