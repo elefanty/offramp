@@ -49,7 +49,7 @@ class Router extends Component {
     // childRoutes will contain all the current children
     // loop through each child route
     for (const route of childRoutes) {
-      const pathToMatch = parseCurrentRoute(route.props.path, currPath, parentPath, store.routes);
+      const pathToMatch = parsedRoute(route.props.path, currPath, parentPath, store.routes);
       // check if the current url path is equal to the current routes path
       // if we're at the correct route, we want to clone that element and return it
       if (pathToMatch === currPath || `${parentPath}${route.props.path}` === currPath) {
