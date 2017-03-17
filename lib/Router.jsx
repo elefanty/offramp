@@ -28,6 +28,10 @@ function parsedRoute(routePath, currPath, routeStore) {
   return newPath;
 }
 
+function returnArray(objectOrArray) {
+  return Array.isArray(objectOrArray) ? objectOrArray : [objectOrArray];
+}
+
 @inject('store') @observer
 class Router extends Component {
 
