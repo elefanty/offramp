@@ -32,6 +32,15 @@ function returnArray(objectOrArray) {
   return Array.isArray(objectOrArray) ? objectOrArray : [objectOrArray];
 }
 
+function getIndexRoutes(currRoute) {
+  let indexRoute = [];
+  if (currRoute.props.children) {
+    indexRoute = returnArray(currRoute.props.children).filter(route => route.props.index);
+  }
+
+  return indexRoute;
+}
+
 @inject('store') @observer
 class Router extends Component {
 
