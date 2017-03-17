@@ -1,24 +1,32 @@
 import React, { Component } from 'react';
-import routeStore from './RouteStore.jsx';
+import { inject } from 'mobx-react';
 
+@inject('store')
 class Link extends Component {
-  handleClick = (e) => {
+  clickHandler = (e) => {
     e.preventDefault();
-    routeStore.push(this.props.to);
+    this.props.store.routes.push(e.target.getAttribute('href'));
   }
 
   render() {
     const linkText = this.props.children;
 
     return (
-      <a href={this.props.to} onClick={this.handleClick}>{linkText}</a>
+      <a
+        href={this.props.to}
+        className={this.props.className}
+        onClick={this.clickHandler}>
+        {linkText}
+      </a>
     );
   }
 }
 
 Link.propTypes = {
-  to: React.PropTypes.string.isRequired,
-  children: React.PropTypes.string.isRequired
+  to: React.PropTypes.string,
+  className: React.PropTypes.string,
+  children: React.PropTypes.string,
+  store: React.propTypes.object
 };
 
 export default Link;
