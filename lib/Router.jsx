@@ -81,13 +81,7 @@ class Router extends Component {
     const { routes } = this.props.store;
     const currPath = routes.pathname;
 
-    let componentToRender;
-
-    if (!Array.isArray(this.props.children)) {
-      componentToRender = findComponent(currPath, [this.props.children], routes);
-    } else {
-      componentToRender = findComponent(currPath, this.props.children, routes);
-    }
+    const componentToRender = findComponent(currPath, returnArray(this.props.children), routes);
 
     return (
       <div>
