@@ -41,7 +41,7 @@ function getIndexRoutes(currRoute) {
   return indexRoute;
 }
 
-function findComponent(pathToFind, routes) {
+function findComponent(pathToFind, routes, routerStore) {
   // check if valid input
   if (!pathToFind) throw new Error('Must enter valid path.');
   if (!Array.isArray(routes)) throw new Error('Input must be an array.');
@@ -52,7 +52,7 @@ function findComponent(pathToFind, routes) {
   for (let i = 0; i < routes.length; i++) {
     if (!routes[i]) break;
 
-    if (parsedRoute(routes[i].props.path, pathToFind) === pathToFind) {
+    if (parsedRoute(routes[i].props.path, pathToFind, routerStore) === pathToFind) {
       children = getIndexRoutes(routes[i]);
       parent = routes[i];
       break;
@@ -60,9 +60,9 @@ function findComponent(pathToFind, routes) {
 
     if (routes[i].props.children) {
       if (!Array.isArray(routes[i].props.children)) {
-        children = findComponent(pathToFind, [routes[i].props.children]);
+        children = findComponent(pathToFind, [routes[i].props.children], routerStore);
       } else {
-        children = findComponent(pathToFind, routes[i].props.children);
+        children = findComponent(pathToFind, routes[i].props.children, routerStore);
       }
     }
 
