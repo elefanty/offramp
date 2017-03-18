@@ -4,9 +4,13 @@ import { Provider } from 'mobx-react';
 import { Router, Route, routeStore } from '../../lib';
 import { AppContainer } from 'react-hot-loader';
 
+import AppStore from './stores/app';
 import App from './components/App.jsx';
 
+const appStore = new AppStore();
+
 const stores = {
+  appStore,
   routes: routeStore
 };
 
