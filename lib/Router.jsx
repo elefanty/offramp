@@ -82,10 +82,10 @@ class Router extends Component {
     const currPath = routes.pathname;
 
     let componentToRender = findComponent(currPath, returnArray(this.props.children), routes);
-    
-    if(!componentToRender) {
+
+    if (!componentToRender) {
       const lastChild = this.props.children[this.props.children.length - 1];
-      if(lastChild.props.path === '*') {
+      if (lastChild.props.path === '*') {
         componentToRender = lastChild;
       }
     }
