@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import createHistory from 'history/createBrowserHistory';
 
-const history = createHistory();
+export const history = createHistory();
 
 function parsedRoute(routePath, currPath) {
   if (!routePath) return;
@@ -93,20 +93,33 @@ function findComponent(pathToFind, routes, updatePath) {
   // check for queries before render
   queries = getQueries();
 
-  return parent ? React.cloneElement(parent, { children, params, queries, updatePath }) : null;
+  return parent ? React.cloneElement(parent, { children, params, queries }) : null;
 }
 
-class Router extends Component {
+export class Router extends Component {
+  constructor() {
+    super();
 
-  updatePath(e) {
-    e.preventDefault();
-    history.push(e.target.getAttribute('href'));
+    this.state = {
+      path: history.location.pathname,
+    }
+
+    this.checkURLChange = setInterval(this.checkUrl, 100);
+  }
+
+  checkUrl = () => {
+    const currPath = history.location.pathname;
+
+    // if current path is different, update it
+    if (currPath !== this.state.path) {
+      this.setState({ path: currPath });
+    }
   }
 
   render() {
-    const currPath = history.location.pathname;
+    const currPath = this.state.path;
 
-    let componentToRender = findComponent(currPath, returnArray(this.props.children), this.updatePath);
+    let componentToRender = findComponent(currPath, returnArray(this.props.children));
 
     if (!componentToRender) {
       const lastChild = this.props.children[this.props.children.length - 1];
@@ -126,5 +139,3 @@ class Router extends Component {
 Router.propTypes = {
   children: React.PropTypes.any
 };
-
-export default Router;
