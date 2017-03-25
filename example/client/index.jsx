@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'mobx-react';
-import { Router, Route, routeStore } from '../../lib';
+import { routeStore } from '../../lib/mobx';
 import { AppContainer } from 'react-hot-loader';
 
 import AppStore from './stores/app';
