@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux';
-import { changePathname } from './actions';
+import changePathname from './actions';
 import createBrowserHistory from 'history/createBrowserHistory';
 
 const history = createBrowserHistory();
