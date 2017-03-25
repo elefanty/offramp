@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from '../../../lib';
+import { Link } from '../../../lib/mobx';
 
 function Nav() {
   return (
