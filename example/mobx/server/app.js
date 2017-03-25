@@ -9,7 +9,7 @@ if (process.env.NODE_ENV === 'development') {
   console.log('DEVELOPMENT ENVIRONMENT: Hot Reloading...');
 
   const webpack = require('webpack');
-  const webpackDevConfig = require('../../webpack.config');
+  const webpackDevConfig = require('../../../webpack.config');
 
   const compiler = webpack(webpackDevConfig);
 

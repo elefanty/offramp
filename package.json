@@ -5,8 +5,8 @@
   "scripts": {
     "lint": "eslint lib/*.js*",
     "start": "./node_modules/.bin/webpack && open example/index.html",
-    "dev": "NODE_ENV=development node example/server/app",
-    "dev-redux": "NODE_ENV=development node example/redux/server/app"
+    "dev-mobx": "NODE_ENV=development STORE_TYPE=mobx node example/mobx/server/app",
+    "dev-redux": "NODE_ENV=development STORE_TYPE=redux node example/redux/server/app"
   },
   "dependencies": {
     "history": "^4.6.0",

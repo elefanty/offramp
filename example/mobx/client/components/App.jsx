@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Route } from '../../../lib/mobx';
+import { Router, Route } from '../../../../lib/mobx';
 
 import Main from './Main.jsx';
 import Home from './Home.jsx';
