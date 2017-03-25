@@ -28,12 +28,12 @@ module.exports = {
     main: [
       'react-hot-loader/patch',
       'webpack-hot-middleware/client?noInfo=false',
-      path.join(__dirname, 'example/client/index.jsx')
+      path.join(__dirname, 'example/redux/client/index.jsx')
     ]
   },
 
   output: {
-    path: path.join(__dirname, 'example/dist'),
+    path: path.join(__dirname, 'example/redux/dist'),
     publicPath: '/assets/',
     filename: 'bundle.js'
   },

@@ -5,7 +5,8 @@
   "scripts": {
     "lint": "eslint lib/*.js*",
     "start": "./node_modules/.bin/webpack && open example/index.html",
-    "dev": "NODE_ENV=development node example/server/app"
+    "dev": "NODE_ENV=development node example/server/app",
+    "dev-redux": "NODE_ENV=development node example/redux/server/app"
   },
   "dependencies": {
     "history": "^4.6.0",
@@ -24,6 +25,7 @@
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-react": "^6.23.0",
+    "babel-preset-stage-2": "^6.22.0",
     "eslint": "^3.17.1",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "^2.2.0",
