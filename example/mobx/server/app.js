@@ -30,6 +30,31 @@ if (process.env.NODE_ENV === 'development') {
 // Serve static assets
 app.use(express.static(path.join(__dirname, '../dist/assets')));
 
+// Test async hooks in router
+app.get('/api/hooks', (req, res) => {
+  const hooks = [
+    {
+      name: 'beforeEnter'
+    },
+
+    {
+      name: 'onEnter'
+    },
+
+    {
+      name: 'beforeExit'
+    },
+
+    {
+      name: 'onExit'
+    }
+  ];
+
+  setTimeout(() => {
+    res.json(hooks);
+  }, 1000);
+});
+
 // Always send index.html
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../dist/index.html'));
