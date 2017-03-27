@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { resolve } from 'react-resolver';
 
 class Route extends Component {
   componentDidMount() {
@@ -15,6 +16,24 @@ class Route extends Component {
   }
 
   render() {
+    if (this.props.hooks && this.props.hooks.asyncBeforeEnter) {
+      const resolver = (props) => (
+        React.cloneElement(props.component, {
+          data: props.data,
+          children: props.children
+        })
+      );
+
+      const ResolvedComponent = resolve('data', this.props.hooks.asyncBeforeEnter)(resolver);
+
+      return (
+        <ResolvedComponent
+          component={<this.props.component />}
+          children={this.props.children}
+        />
+      );
+    }
+
     return (
       <this.props.component
         params={this.props.params}
