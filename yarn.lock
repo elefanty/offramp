@@ -2927,6 +2927,10 @@ react-redux@^5.0.3:
     lodash-es "^4.2.0"
     loose-envify "^1.1.0"
 
+react-resolver@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/react-resolver/-/react-resolver-3.1.0.tgz#b999fb361c6d1ea49868faf0086615b2ac475bf8"
+
 react@^15.4.2:
   version "15.4.2"
   resolved "https://registry.yarnpkg.com/react/-/react-15.4.2.tgz#41f7991b26185392ba9bae96c8889e7e018397ef"

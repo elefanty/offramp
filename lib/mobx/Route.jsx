@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
+import { resolve } from 'react-resolver';
 
 @inject('store') @observer
 class Route extends Component {
@@ -16,6 +17,36 @@ class Route extends Component {
   }
 
   render() {
+    const { pathname, params, queries, push, goBack, goForward } = this.props.store.routes;
+
+    const routes = {
+      pathname,
+      params,
+      queries,
+      push,
+      goBack,
+      goForward,
+    };
+
+    if (this.props.hooks && this.props.hooks.asyncBeforeEnter) {
+      const resolver = (props) => (
+        React.cloneElement(props.component, {
+          data: props.data,
+          children: props.children
+        })
+      );
+
+      const ResolvedComponent = resolve('data', this.props.hooks.asyncBeforeEnter)(resolver);
+
+      return (
+        <ResolvedComponent component={
+            <this.props.component
+              children={this.props.children}
+              routes={routes} />
+          } />
+      );
+    }
+
     return (
       <this.props.component
         params={this.props.store.routes.params}
