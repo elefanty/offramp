@@ -5,6 +5,7 @@ import Main from './Main.jsx';
 import Home from './Home.jsx';
 import About from './About.jsx';
 import HooksList from './HooksList.jsx';
+import NotFound from './NotFound.jsx';
 
 const hooks = {
   asyncBeforeEnter: () => {
@@ -24,7 +25,7 @@ function App() {
         <Route path="/about" component={About} />
         <Route path="/hooks" hooks={hooks} component={HooksList} />
       </Route>
-      <Route path="*" component={About} />
+      <Route path="*" component={NotFound} />
     </Router>
   );
 }

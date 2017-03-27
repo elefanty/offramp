@@ -7,6 +7,7 @@ import About from './About.jsx';
 import Default from './Default.jsx';
 import Users from './Users.jsx';
 import User from './User.jsx';
+import NotFound from './NotFound.jsx';
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
           <Route path="/users/:id" component={User} />
         </Route>
       </Route>
-      <Route path="*" component={About} />
+      <Route path="*" component={NotFound} />
     </Router>
   );
 }

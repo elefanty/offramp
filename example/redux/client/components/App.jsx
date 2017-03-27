@@ -7,6 +7,7 @@ import About from './About.jsx';
 import Users from './Users.jsx';
 import User from './User.jsx';
 import Hooks from './Hooks.jsx';
+import NotFound from './NotFound.jsx';
 
 const hooks = {
   asyncBeforeEnter: () => {
@@ -29,7 +30,7 @@ function App() {
           <Route path="/users/:id" component={User} />
         </Route>
       </Route>
-      <Route path="*" component={About} />
+      <Route path="*" component={NotFound} />
     </Router>
   );
 }
