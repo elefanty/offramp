@@ -21,6 +21,14 @@ class RouteStore {
     this.queries = this.getQueries(location.search);
   }
 
+  @action goBack = () => {
+    history.goBack();
+  }
+
+  @action goForward = () => {
+    history.goForward();
+  }
+
   // get current queries
   getQueries = (query) => {
     if (location.search) {
@@ -35,7 +43,7 @@ class RouteStore {
     }
   }
 
-  // go back
+  // navigation - backwards or forwards
   checkUrl = () => {
     const currPath = window.location.pathname;
 
