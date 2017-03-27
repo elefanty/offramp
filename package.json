@@ -6,7 +6,8 @@
     "lint": "eslint lib/*.js*",
     "start": "./node_modules/.bin/webpack && open example/index.html",
     "dev-mobx": "NODE_ENV=development STORE_TYPE=mobx node example/mobx/server/app",
-    "dev-redux": "NODE_ENV=development STORE_TYPE=redux node example/redux/server/app"
+    "dev-redux": "NODE_ENV=development STORE_TYPE=redux node example/redux/server/app",
+    "dev-basic": "NODE_ENV=development STORE_TYPE=basic node example/basic/server/app"
   },
   "dependencies": {
     "history": "^4.6.0",

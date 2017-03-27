@@ -1,25 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
 import { AppContainer } from 'react-hot-loader';
-import { createStore, combineReducers } from 'redux';
 
-// import AppStore from './stores/app';
 import App from './components/App.jsx';
-import { reducers } from '../../../lib/redux';
-
-// const appStore = new AppStore();
-const stores = createStore(combineReducers({
-  router: reducers
-}));
 
 const render = (Component) => {
   ReactDOM.render(
-    <Provider store={stores}>
       <AppContainer>
         <Component />
-      </AppContainer>
-    </Provider>,
+      </AppContainer>,
     document.getElementById('root')
   );
 };
