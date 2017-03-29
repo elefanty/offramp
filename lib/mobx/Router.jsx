@@ -78,10 +78,10 @@ function findComponent(pathToFind, routes, routerStore) {
 @inject('store') @observer
 class Router extends Component {
   render() {
-    const { routes } = this.props.store;
-    const currPath = routes.pathname;
+    const { router } = this.props.store;
+    const currPath = router.pathname;
 
-    let componentToRender = findComponent(currPath, returnArray(this.props.children), routes);
+    let componentToRender = findComponent(currPath, returnArray(this.props.children), router);
 
     if (!componentToRender) {
       const lastChild = this.props.children[this.props.children.length - 1];

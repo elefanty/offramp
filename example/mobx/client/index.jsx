@@ -11,7 +11,7 @@ const appStore = new AppStore();
 
 const stores = {
   appStore,
-  routes: routeStore
+  router: routeStore
 };
 
 const render = (Component) => {
