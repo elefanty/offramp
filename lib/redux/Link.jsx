@@ -1,9 +1,7 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux';
 import changePathname from './actions';
-import createBrowserHistory from 'history/createBrowserHistory';
-
-const history = createBrowserHistory();
+import history from './History';
 
 const Link = ({ dispatch, to, tag, className }) => {
   return (
