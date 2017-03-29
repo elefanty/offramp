@@ -1,7 +1,7 @@
 # Offramp
-***
 
-Offramp is a React library that provides simple routing for your single page application.
+Offramp is a React library that provides simple routing for your single page applications.
+
 ### Features
 
  * Synchronized routing state with application state
@@ -29,7 +29,7 @@ const stores = {
 ```javascript
 import React from 'react';
 import { render } from 'react-dom';
-import { routerStore, Router, Route } from 'offramp/mobx';
+import { routerReducer, Router, Route } from 'offramp/redux';
 import { Provider } from 'react-redux'
 
 // import your reducers and pass them in with the routerReducer
@@ -44,7 +44,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Router, Route } from 'offramp';
 ```
-Once all the correct dependencies are imported, just defign your routes
+Once all the correct dependencies are imported, just define your routes
 ```javascript
 // import all your components for your routes
 import Main from './components/Main';
@@ -134,7 +134,7 @@ render(
   document.getElementById('root')
 );
 ```
-If you need to support nested routes for your application, just place routes within their immediate parent route component. If any of these children routes need to be an ```index``` route, just provide an ```index``` property on the expected index route. 
+If you need to support nested routes for your application, just place routes within their immediate parent route component. If any of these children routes need to be an ```index``` route, just provide an ```index``` property on the expected index route.
 ```javascript
 // import your components
 import Main from './components/Main';
@@ -166,9 +166,9 @@ Offramp is meant to provide an easy way to handle any expected data when renderi
 </Route>
 ...
 ```
- 
+
 ## Asynchronous Routes
-If you need to support async hooks on a particular URL path, you first need to create a hooks object in a separate file and import it or define your hooks directly in your ```index.js``` file. 
+If you need to support async hooks on a particular URL path, you first need to create a hooks object in a separate file and import it or define your hooks directly in your ```index.js``` file.
 ```javascript
 // index.js
 
@@ -181,7 +181,7 @@ const userHooks = {
 }
 ...
 ```
-Once your hooks are defined you can pass them down into your components as a prop on that route component. 
+Once your hooks are defined you can pass them down into your components as a prop on that route component.
 ```javascript
 ...
 <Route path='/users' component={Users}>
@@ -199,6 +199,5 @@ Offramp provides a ```<Link />``` component to navigate between your different v
 </nav>
 ```
 ## Upcoming Features
-* Support declarative routing 
+* Support declarative routing
 * Memoize routes to prevent excessive recursive calls
-
