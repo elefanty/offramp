@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import changePathname from './actions';
 
 function parsedRoute(routePath, currPath) {
   if (!routePath) return;
@@ -93,8 +94,20 @@ function findComponent(pathToFind, routes) {
 
 }
 
+let oneTimeOnly = true;
+
 const Router = ({ router, children, dispatch }) => {
     let currPath = router.pathname;
+
+     if(oneTimeOnly) {
+      oneTimeOnly = false;
+      setInterval(function() {
+        if(currPath !== window.location.pathname) {
+          dispatch(changePathname(window.location.pathname));
+          currPath = window.location.pathname;
+        }
+      }, 100);
+    }
 
     let componentToRender = findComponent(currPath, returnArray(children));
 
