@@ -17,9 +17,9 @@ class Route extends Component {
   }
 
   render() {
-    const { pathname, params, queries, push, goBack, goForward } = this.props.store.routes;
+    const { pathname, params, queries, push, goBack, goForward } = this.props.store.router;
 
-    const routes = {
+    const router = {
       pathname,
       params,
       queries,
@@ -42,16 +42,16 @@ class Route extends Component {
         <ResolvedComponent component={
             <this.props.component
               children={this.props.children}
-              routes={routes} />
+              router={router} />
           } />
       );
     }
 
     return (
       <this.props.component
-        params={this.props.store.routes.params}
+        params={this.props.store.router.params}
         children={this.props.children}
-        routes={this.props.store.routes}
+        router={this.props.store.router}
       />
     );
   }

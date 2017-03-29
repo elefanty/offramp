@@ -5,7 +5,7 @@ import { inject } from 'mobx-react';
 class Link extends Component {
   clickHandler = (e) => {
     e.preventDefault();
-    this.props.store.routes.push(e.target.getAttribute('href'));
+    this.props.store.router.push(e.target.getAttribute('href'));
   }
 
   render() {
