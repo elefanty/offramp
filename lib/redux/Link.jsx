@@ -5,7 +5,7 @@ import createBrowserHistory from 'history/createBrowserHistory';
 
 const history = createBrowserHistory();
 
-const Link = ({ dispatch, to, children, className }) => {
+const Link = ({ dispatch, to, tag, className }) => {
   return (
     <a href={to}
        onClick={e => {
@@ -14,13 +14,13 @@ const Link = ({ dispatch, to, children, className }) => {
          history.push(to);
        }}
     >
-      {children}
+      {tag}
     </a>
   )
 }
 
 Link.propTypes = {
-  children: PropTypes.node.isRequired
+  children: React.PropTypes.string
 };
 
 export default connect()(Link)

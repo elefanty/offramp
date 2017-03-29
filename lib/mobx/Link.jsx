@@ -9,8 +9,8 @@ class Link extends Component {
   }
 
   render() {
-    const linkText = this.props.children;
-
+    const linkText = this.props.tag;
+    
     return (
       <a
         href={this.props.to}
@@ -25,7 +25,7 @@ class Link extends Component {
 Link.propTypes = {
   to: React.PropTypes.string,
   className: React.PropTypes.string,
-  children: React.PropTypes.string,
+  tag: React.PropTypes.string,
   store: React.PropTypes.object
 };
 
