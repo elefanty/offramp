@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 
-function parsedRoute(routePath, currPath, routeStore) {
+function parsedRoute(routePath, currPath, routerStore) {
   if (!routePath) return;
   let newPath = routePath;
   if (routePath.includes(':')) {
@@ -21,7 +21,7 @@ function parsedRoute(routePath, currPath, routeStore) {
       }
     }
 
-    routeStore.params = paramsObj;
+    routerStore.params = paramsObj;
     newPath = modifiedUrl;
   }
 

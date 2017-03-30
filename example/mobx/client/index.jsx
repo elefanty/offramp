@@ -1,17 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'mobx-react';
-import { routeStore } from '../../../lib/mobx';
+import { RouterStore } from '../../../lib/mobx';
 import { AppContainer } from 'react-hot-loader';
 
 import AppStore from './stores/app';
 import App from './components/App.jsx';
 
 const appStore = new AppStore();
+const routerStore = new RouterStore();
 
 const stores = {
   appStore,
-  router: routeStore
+  router: routerStore
 };
 
 const render = (Component) => {
