@@ -3,7 +3,7 @@ import createHistory from 'history/createBrowserHistory';
 
 const history = createHistory();
 
-class RouteStore {
+class RouterStore {
   @observable pathname;
 
   constructor() {
@@ -54,4 +54,4 @@ class RouteStore {
   }
 }
 
-export default new RouteStore();
+export default RouterStore;
