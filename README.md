@@ -15,11 +15,13 @@ To get started, ```yarn add offramp```.
 ```javascript
 import React from 'react';
 import { render } from 'react-dom';
-import { routerStore, Router, Route } from 'offramp/mobx';
+import { RouterStore, Router, Route } from 'offramp/mobx';
 import { Provider } from 'mobx-react';
 
 // import your mobx stores and place them in stores object
 // create router property with a value of the routerStore
+const routerStore = new RouterStore();
+
 const stores = {
 	// your stores here..
 	router: routerStore
