@@ -113,7 +113,7 @@ If you are using Redux, we first need to import some utilities from the library:
 ```javascript
 import { createStore, combineReducers } from 'redux';
 ```
-Then create your store by combining your reducers and passs in the routerReducer:
+Then create your store by combining your reducers and pass in the routerReducer:
 ```javascript
 const stores = createStore(combineReducers({
   // ...reducers
@@ -121,7 +121,7 @@ const stores = createStore(combineReducers({
 });
 ```
 ## Creating Routes
-Routing in Offramp is meant to offer a familiar API and allow you to get your client-side navigation started quickly. To create your routing structure, just define your top level ```<Router>``` component that will wrap all your routes. Then to structure your routes, just nest them within the ```<Router>``` component and provide each of your routes with the correct compoent to render.
+Routing in Offramp is meant to offer a familiar API and allow you to get your client-side navigation started quickly. To create your routing structure, just define your top level ```<Router>``` component that will wrap all your routes. Then, to structure your routes, just nest them within the ```<Router>``` component, and provide each of your routes with the correct component to render.
 ```javascript
 // import your components
 import Contact from './components/Contact';
@@ -162,7 +162,7 @@ render(
 );
 ```
 ### Router State
-Offramp is meant to provide an easy way to handle any expected data when rendering your component. Just declare in your route paths where you expect a parameter and Offramp will make sure both the current URL parameters and query parameters are updated and available directly in your store.   
+Offramp is meant to provide an easy way to handle any expected data when rendering your component. Just declare in your route paths where you expect a parameter, and Offramp will make sure both the current URL parameters and query parameters are updated and available directly in your store.   
 ```javascript
 ...
 <Route path='/users' component={Users}>
