@@ -1,4 +1,6 @@
-# Offramp
+<p>
+  <img alt='offramp-logo' src='./offramp_logo.jpeg'>
+</p>
 
 Offramp is a React library that provides simple routing for your single page applications.
 
