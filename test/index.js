@@ -13,3 +13,12 @@ describe('returnArray', function() {
 		assert.isArray(utils.returnArray(arr));
 	});
 });
+
+describe('parsedRouteMobX', function() {
+	it('should return a modifiedURL that is equal to currentPath', function() {
+		var routePath = '/index/:id';
+		var currPath = '/index/5';
+		var parsedRouteMobX = utils.parsedRouteMobX(routePath, currPath, { params: '' });
+		assert.equal(parsedRouteMobX, '/index/5');
+	});
+});
